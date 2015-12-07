@@ -1,0 +1,35 @@
+apply plugin: 'com.android.application'
+
+android {
+  compileSdkVersion 23
+  buildToolsVersion '23.0.2'
+
+  defaultConfig {
+    applicationId "com.joker.blurapplication"
+    minSdkVersion 14
+    targetSdkVersion 23
+    versionCode 1
+    versionName "1.0"
+
+    renderscriptTargetApi 19
+    renderscriptSupportModeEnabled true
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+}
+
+dependencies {
+  compile 'com.android.support:appcompat-v7:23.1.0'
+  compile 'com.squareup.picasso:picasso:2.5.2'
+  compile 'com.jakewharton:butterknife:7.0.1'
+  compile 'com.github.bumptech.glide:glide:3.6.1'
+  compile 'com.trello:rxlifecycle-components:0.3.0'
+  debugCompile 'com.squareup.leakcanary:leakcanary-android:1.3.1'
+  releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3.1'
+  compile 'com.squareup.retrofit:retrofit:1.9.0'
+  compile 'com.squareup.okhttp:okhttp-urlconnection:2.1.0'
+}

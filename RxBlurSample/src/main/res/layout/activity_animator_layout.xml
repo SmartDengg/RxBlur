@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <ImageView
+      android:id="@+id/_layout_animator_iv"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="8dp"
+      android:scaleType="centerCrop"
+      android:background="@android:color/transparent"
+      />
+
+  <EditText
+      android:id="@+id/_layout_radius_et"
+      style="@style/edit_text_style"
+      android:hint="blur radius"
+      />
+
+  <EditText
+      android:id="@+id/_layout_duration_et"
+      android:layout_toRightOf="@id/_layout_radius_et"
+      android:layout_marginLeft="24dp"
+      android:hint="blur duration"
+      style="@style/edit_text_style"
+      />
+
+  <Button
+      android:id="@+id/_layout_blur_btn"
+      android:layout_toRightOf="@id/_layout_duration_et"
+      android:layout_marginLeft="24dp"
+      android:layout_marginBottom="32dp"
+      android:text="Go"
+      android:layout_alignParentBottom="true"
+      android:layout_alignParentRight="true"
+      style="@style/button_style"/>
+
+
+</RelativeLayout>

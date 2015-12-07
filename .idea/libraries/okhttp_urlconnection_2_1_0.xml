@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="okhttp-urlconnection-2.1.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp-urlconnection/2.1.0/6025b7df8a6a4193138723ef120e7228b6a97024/okhttp-urlconnection-2.1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp-urlconnection/2.1.0/b85100010ff2e7d9843bb8f0041bd8aa3f78899/okhttp-urlconnection-2.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

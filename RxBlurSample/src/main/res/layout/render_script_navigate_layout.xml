@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    >
+
+  <Button
+      android:id="@+id/navigate_layout_picasso_btn"
+      android:text="Picasso Blur"
+      style="@style/button_style"
+      />
+
+  <Button
+      android:id="@+id/navigate_layout_glide_btn"
+      android:text="Glide Blur"
+      style="@style/button_style"
+      />
+
+  <Button
+      android:id="@+id/navigate_layout_remote_btn"
+      android:text="Remote Blur"
+      style="@style/button_style"
+      />
+
+</LinearLayout>

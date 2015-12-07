@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    >
+
+  <ImageView
+      android:id="@+id/_layout_picasso_iv"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="8dp"
+      android:scaleType="centerCrop"
+      android:background="@android:color/transparent"
+      />
+
+  <TextView
+      android:id="@+id/_layout_duration_tv"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="32dp"
+      android:layout_alignParentBottom="true"
+      android:gravity="center"
+      android:textColor="@android:color/holo_purple"
+      android:textSize="18sp"
+      android:text="please waiting...."
+      android:background="@android:color/transparent"
+      />
+
+  <include layout="@layout/include_progress_layout"/>
+
+
+</RelativeLayout>

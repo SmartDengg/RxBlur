@@ -82,9 +82,8 @@ public class RemoteBlurActivity extends BaseActivity implements BlurInterface {
             Drawable[] layers = new Drawable[2];
             layers[0] = new BitmapDrawable(RemoteBlurActivity.this.getResources(), sourceBitmap);
             layers[1] = new BitmapDrawable(RemoteBlurActivity.this.getResources(), blurBitmap);
-            TransitionDrawable transitionDrawable = new TransitionDrawable(layers);
 
-            return transitionDrawable;
+            return new TransitionDrawable(layers);
           }
         })
         .observeOn(AndroidSchedulers.mainThread())
@@ -125,7 +124,7 @@ public class RemoteBlurActivity extends BaseActivity implements BlurInterface {
     return R.layout.activity_simple_layout;
   }
 
-  @Override public void setupToolbar() {
+  @Override public void setupActionBar() {
     getSupportActionBar().setTitle("Remote Blur");
     durationTv.setText("retrieving image from remote,wait......");
 

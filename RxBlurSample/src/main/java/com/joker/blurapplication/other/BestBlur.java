@@ -25,6 +25,7 @@ import android.support.v8.renderscript.RSInvalidStateException;
 import android.support.v8.renderscript.RenderScript;
 import android.support.v8.renderscript.ScriptIntrinsicBlur;
 import android.support.v8.renderscript.ScriptIntrinsicColorMatrix;
+import com.joker.blurapplication.other.util.MathUtil;
 
 public class BestBlur {
 

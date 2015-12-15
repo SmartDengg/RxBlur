@@ -7,8 +7,8 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import com.jakewharton.rxbinding.internal.MainThreadSubscription;
 import com.jakewharton.rxbinding.internal.Preconditions;
-import com.joker.blurapplication.other.ExecutorUtil;
-import com.joker.blurapplication.other.FastBlurUtil;
+import com.joker.blurapplication.other.util.ExecutorUtil;
+import com.joker.blurapplication.other.util.FastBlurUtil;
 import com.joker.blurapplication.other.TargetAdapter;
 import com.joker.blurapplication.rx.PicassoError;
 import com.squareup.picasso.Picasso;
@@ -30,7 +30,7 @@ public class FastBlurOnSubscribe implements Observable.OnSubscribe<Bitmap> {
   private static final String TAG = FastBlurOnSubscribe.class.getSimpleName();
   private Context context;
   private int resId;
-  private float scale = 1l;
+  private float scale = 1L;
   private int radius;
   private Executor ioExecutor;
 
@@ -61,11 +61,13 @@ public class FastBlurOnSubscribe implements Observable.OnSubscribe<Bitmap> {
       }
     };
 
-    Picasso.with(context)//
-        .load(resId)//
-        .noFade()//
-        .config(Bitmap.Config.ARGB_8888)//
-        .memoryPolicy(NO_CACHE, NO_STORE).into(target);
+    Picasso
+        .with(context)
+        .load(resId)
+        .noFade()
+        .config(Bitmap.Config.ARGB_8888)
+        .memoryPolicy(NO_CACHE, NO_STORE)
+        .into(target);
 
     subscriber.add(new MainThreadSubscription() {
       @Override protected void onUnsubscribe() {
@@ -75,8 +77,7 @@ public class FastBlurOnSubscribe implements Observable.OnSubscribe<Bitmap> {
     });
   }
 
-  private Runnable futureRunnable(final Bitmap sourceBitmap,
-      final Subscriber<? super Bitmap> subscriber) {
+  private Runnable futureRunnable(final Bitmap sourceBitmap, final Subscriber<? super Bitmap> subscriber) {
 
     return new Runnable() {
       @Override public void run() {

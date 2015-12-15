@@ -31,14 +31,15 @@ public abstract class LazyBaseActivity extends RxAppCompatActivity {
     return false;
   }
 
+
   @Override protected void onDestroy() {
     super.onDestroy();
     ButterKnife.unbind(LazyBaseActivity.this);
   }
 
-  public abstract int getLayoutId();
+  protected abstract int getLayoutId();
 
-  public abstract void setupToolbar();
+  protected abstract void setupToolbar();
 
   protected abstract void initDrawable();
 

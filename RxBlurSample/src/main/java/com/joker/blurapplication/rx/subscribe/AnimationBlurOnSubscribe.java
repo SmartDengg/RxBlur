@@ -87,7 +87,7 @@ public class AnimationBlurOnSubscribe implements Observable.OnSubscribe<Bitmap> 
     });
   }
 
-  public Bitmap quickBlur(Bitmap sourceBitmap, int factor) {
+  private Bitmap quickBlur(Bitmap sourceBitmap, int factor) {
     if (factor <= 0) {
       return Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
     }

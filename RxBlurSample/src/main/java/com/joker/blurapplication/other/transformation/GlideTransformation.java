@@ -14,20 +14,21 @@ import com.bumptech.glide.load.Transformation;
 import com.bumptech.glide.load.engine.Resource;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapResource;
+import java.lang.ref.WeakReference;
 
 /**
  * Created by Joker on 2015/12/5.
  */
 public class GlideTransformation implements Transformation<Bitmap> {
 
-  protected static final int UP_LIMIT = 25;
-  protected static final int LOW_LIMIT = 1;
-  private final Context context;
+  private static final int UP_LIMIT = 25;
+  private static final int LOW_LIMIT = 1;
+  private final WeakReference<Context> weakReference;
   private final int blurRadius;
   private final BitmapPool bitmapPool;
 
   public GlideTransformation(Context context, BitmapPool bitmapPool, int radius) {
-    this.context = context;
+    this.weakReference = new WeakReference<>(context);
     this.bitmapPool = bitmapPool;
 
     if (radius < LOW_LIMIT) {
@@ -57,19 +58,20 @@ public class GlideTransformation implements Transformation<Bitmap> {
     paint.setFlags(Paint.FILTER_BITMAP_FLAG);
     canvas.drawBitmap(sourceBitmap, 0, 0, paint);
 
-    RenderScript rs = RenderScript.create(context);
-    Allocation input =
-        Allocation.createFromBitmap(rs, blurBitmap, Allocation.MipmapControl.MIPMAP_NONE,
-            Allocation.USAGE_SCRIPT);
-    Allocation output = Allocation.createTyped(rs, input.getType());
-    ScriptIntrinsicBlur blur = ScriptIntrinsicBlur.create(rs, Element.U8_4(rs));
+    if (weakReference.get() != null) {
+      RenderScript rs = RenderScript.create(weakReference.get());
+      Allocation input =
+          Allocation.createFromBitmap(rs, blurBitmap, Allocation.MipmapControl.MIPMAP_NONE, Allocation.USAGE_SCRIPT);
+      Allocation output = Allocation.createTyped(rs, input.getType());
+      ScriptIntrinsicBlur blur = ScriptIntrinsicBlur.create(rs, Element.U8_4(rs));
 
-    blur.setInput(input);
-    blur.setRadius(blurRadius);
-    blur.forEach(output);
-    output.copyTo(blurBitmap);
+      blur.setInput(input);
+      blur.setRadius(blurRadius);
+      blur.forEach(output);
+      output.copyTo(blurBitmap);
 
-    rs.destroy();
+      rs.destroy();
+    }
 
     return BitmapResource.obtain(blurBitmap, bitmapPool);
   }

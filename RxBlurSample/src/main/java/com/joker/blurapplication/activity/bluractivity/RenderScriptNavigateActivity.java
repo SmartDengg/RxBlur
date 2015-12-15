@@ -37,7 +37,7 @@ public class RenderScriptNavigateActivity extends BaseActivity {
     return R.layout.render_script_navigate_layout;
   }
 
-  @Override public void setupToolbar() {
+  @Override public void setupActionBar() {
     getSupportActionBar().setTitle("RenderScript Navigator");
   }
 }

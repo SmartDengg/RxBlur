@@ -1,4 +1,4 @@
-package com.joker.blurapplication.other;
+package com.joker.blurapplication.other.util;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;

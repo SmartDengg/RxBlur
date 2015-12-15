@@ -7,8 +7,8 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import com.jakewharton.rxbinding.internal.MainThreadSubscription;
 import com.jakewharton.rxbinding.internal.Preconditions;
-import com.joker.blurapplication.other.ExecutorUtil;
-import com.joker.blurapplication.other.PaintBlurUtil;
+import com.joker.blurapplication.other.util.ExecutorUtil;
+import com.joker.blurapplication.other.util.PaintBlurUtil;
 import com.joker.blurapplication.other.TargetAdapter;
 import com.joker.blurapplication.rx.PicassoError;
 import com.squareup.picasso.Picasso;
@@ -30,7 +30,7 @@ public class PaintBlurOnSubscribe implements Observable.OnSubscribe<Bitmap> {
   private static final String TAG = PaintBlurOnSubscribe.class.getSimpleName();
   private Context context;
   private int resId;
-  private float scale = 1l;
+  private float scale = 1L;
   private int radius;
   private Executor ioExecutor;
 

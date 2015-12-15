@@ -36,59 +36,62 @@ public class FastBlurActivity extends BaseActivity implements BlurInterface {
 
   @Override public void loadBlurBitmap() {
 
-    subscription.add(RxBlurEffective.fastBlur(FastBlurActivity.this, DRAWABLE_ID, BLUR_RADIUS)
-        .timestamp()
-        .flatMap(new Func1<Timestamped<Bitmap>, Observable<Integer>>() {
-          @Override public Observable<Integer> call(Timestamped<Bitmap> timestamped) {
+    subscription.add(RxBlurEffective
+                         .fastBlur(FastBlurActivity.this, DRAWABLE_ID, BLUR_RADIUS)
+                         .timestamp()
+                         .flatMap(new Func1<Timestamped<Bitmap>, Observable<Integer>>() {
+                           @SuppressWarnings("deprecation") @Override
+                           public Observable<Integer> call(Timestamped<Bitmap> timestamped) {
 
-            int count = (int) (timestamped.getTimestampMillis() - startTime);
+                             int count = (int) (timestamped.getTimestampMillis() - startTime);
 
-            FastBlurActivity.this.removeLoading();
+                             FastBlurActivity.this.removeLoading();
 
-            BitmapDrawable bitmapDrawable =
-                new BitmapDrawable(FastBlurActivity.this.getResources(), timestamped.getValue());
+                             BitmapDrawable bitmapDrawable =
+                                 new BitmapDrawable(FastBlurActivity.this.getResources(), timestamped.getValue());
 
-            Drawable[] layers = new Drawable[] {
-                FastBlurActivity.this.getResources().getDrawable(DRAWABLE_ID), bitmapDrawable
-            };
+                              Drawable[] layers = new Drawable[] {
+                                 FastBlurActivity.this.getResources().getDrawable(DRAWABLE_ID), bitmapDrawable
+                             };
 
-            TransitionDrawable transitionDrawable = new TransitionDrawable(layers);
-            FastBlurActivity.this.blurIv.setImageDrawable(transitionDrawable);
-            transitionDrawable.startTransition(count);
+                             TransitionDrawable transitionDrawable = new TransitionDrawable(layers);
+                             FastBlurActivity.this.blurIv.setImageDrawable(transitionDrawable);
+                             transitionDrawable.startTransition(count);
 
-            return Observable.range(0, count, Schedulers.computation())
-                .compose(FastBlurActivity.this.<Integer>bindUntilEvent(ActivityEvent.DESTROY));
-          }
-        })
-        .onBackpressureBuffer()
-        .compose(SchedulersCompat.<Integer>observeOnMainThread())
-        .subscribe(new SimpleSubscriber<Integer>() {
-          @Override public void onStart() {
-            this.request(1);
-            FastBlurActivity.this.startTime = System.currentTimeMillis();
-          }
+                             return Observable
+                                 .range(0, count, Schedulers.computation())
+                                 .compose(FastBlurActivity.this.<Integer>bindUntilEvent(ActivityEvent.DESTROY));
+                           }
+                         })
+                         .onBackpressureBuffer()
+                         .compose(SchedulersCompat.<Integer>observeOnMainThread())
+                         .subscribe(new SimpleSubscriber<Integer>() {
+                           @Override public void onStart() {
+                             this.request(1);
+                             FastBlurActivity.this.startTime = System.currentTimeMillis();
+                           }
 
-          @Override public void onNext(Integer integer) {
-            durationTv.setText("" + integer + "ms");
-            request(1);
-          }
+                           @Override public void onNext(Integer integer) {
+                             durationTv.setText("" + integer + "ms");
+                             request(1);
+                           }
 
-          @Override public void onError(Throwable e) {
-            super.onError(e);
+                           @Override public void onError(Throwable e) {
+                             super.onError(e);
 
-            FastBlurActivity.this.removeLoading();
-            if (e instanceof PicassoError) {
-              blurIv.setImageDrawable(((PicassoError) e).getErrorDrawable());
-            }
-          }
-        }));
+                             FastBlurActivity.this.removeLoading();
+                             if (e instanceof PicassoError) {
+                               blurIv.setImageDrawable(((PicassoError) e).getErrorDrawable());
+                             }
+                           }
+                         }));
   }
 
   @Override public int getLayoutId() {
     return R.layout.activity_simple_layout;
   }
 
-  @Override public void setupToolbar() {
+  @Override public void setupActionBar() {
     getSupportActionBar().setTitle("Fast Blur");
   }
 }

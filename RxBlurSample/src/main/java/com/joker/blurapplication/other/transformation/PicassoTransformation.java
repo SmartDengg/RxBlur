@@ -18,8 +18,8 @@ import com.squareup.picasso.Transformation;
  */
 public class PicassoTransformation implements Transformation {
 
-  protected static final int UP_LIMIT = 25;
-  protected static final int LOW_LIMIT = 1;
+  private static final int UP_LIMIT = 25;
+  private static final int LOW_LIMIT = 1;
   private final Context context;
   private final int blurRadius;
 

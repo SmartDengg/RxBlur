@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import com.joker.blurapplication.MyApplication;
 import com.joker.blurapplication.R;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 import rx.subscriptions.CompositeSubscription;
@@ -37,7 +38,7 @@ public abstract class BaseActivity extends RxAppCompatActivity {
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(BaseActivity.this.getLayoutId());
-    BaseActivity.this.setupToolbar();
+    BaseActivity.this.setupActionBar();
 
     if (BaseActivity.this instanceof BlurInterface) {
       ((BlurInterface) BaseActivity.this).loadBlurBitmap();
@@ -62,13 +63,14 @@ public abstract class BaseActivity extends RxAppCompatActivity {
     BaseActivity.this.unSubscribe();
     super.onDestroy();
     ButterKnife.unbind(BaseActivity.this);
+    MyApplication.get().getRefWatcher().watch(this);
   }
 
-  protected void unSubscribe() {
+  private void unSubscribe() {
     if (subscription != null && !subscription.isUnsubscribed()) subscription.clear();
   }
 
-  public abstract int getLayoutId();
+  protected abstract int getLayoutId();
 
-  public abstract void setupToolbar();
+  protected abstract void setupActionBar();
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
   <ImageView
@@ -10,13 +10,13 @@
       android:layout_margin="8dp"
       android:scaleType="centerCrop"
       android:background="@android:color/transparent"
-      />
+  />
 
   <EditText
       android:id="@+id/_layout_radius_et"
       style="@style/edit_text_style"
       android:hint="blur radius"
-      />
+      tools:ignore="HardcodedText"/>
 
   <EditText
       android:id="@+id/_layout_duration_et"
@@ -24,7 +24,7 @@
       android:layout_marginLeft="24dp"
       android:hint="blur duration"
       style="@style/edit_text_style"
-      />
+      tools:ignore="HardcodedText"/>
 
   <Button
       android:id="@+id/_layout_blur_btn"
@@ -34,7 +34,7 @@
       android:text="Go"
       android:layout_alignParentBottom="true"
       android:layout_alignParentRight="true"
-      style="@style/button_style"/>
+      style="@style/button_style" tools:ignore="HardcodedText"/>
 
 
 </RelativeLayout>

@@ -38,10 +38,10 @@ public class RxAnimatorBlurActivity extends LazyBaseActivity implements BlurInte
 
   private static final String TAG = RxAnimatorBlurActivity.class.getSimpleName();
 
-  @Nullable @Bind(R.id._layout_animator_iv) ImageView blurIv;
-  @Nullable @Bind(R.id._layout_radius_et) EditText radiusEt;
-  @Nullable @Bind(R.id._layout_duration_et) EditText durationEt;
-  @Nullable @Bind(R.id._layout_blur_btn) Button blurBtn;
+  @Nullable @Bind(R.id._layout_animator_iv) protected ImageView blurIv;
+  @Nullable @Bind(R.id._layout_radius_et) protected EditText radiusEt;
+  @Nullable @Bind(R.id._layout_duration_et) protected EditText durationEt;
+  @Nullable @Bind(R.id._layout_blur_btn) protected Button blurBtn;
 
   private String radius, duration;
 

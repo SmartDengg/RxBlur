@@ -7,8 +7,8 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import com.jakewharton.rxbinding.internal.MainThreadSubscription;
 import com.jakewharton.rxbinding.internal.Preconditions;
-import com.joker.blurapplication.other.transformation.PicassoTransformation;
 import com.joker.blurapplication.other.TargetAdapter;
+import com.joker.blurapplication.other.transformation.PicassoTransformation;
 import com.joker.blurapplication.rx.PicassoError;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
@@ -48,12 +48,13 @@ public class PicassoBlurOnSubscribe implements Observable.OnSubscribe<Bitmap> {
       }
     };
 
-    Picasso.with(context)//
-        .load(resId)//
-        .noFade()//
-        .memoryPolicy(NO_CACHE, NO_STORE)//
-        .config(Bitmap.Config.ARGB_8888)//
-        .transform(new PicassoTransformation(context, radius))//
+    Picasso
+        .with(context)
+        .load(resId)
+        .noFade()
+        .memoryPolicy(NO_CACHE, NO_STORE)
+        .config(Bitmap.Config.ARGB_8888)
+        .transform(new PicassoTransformation(context, radius))
         .into(target);
 
     subscriber.add(new MainThreadSubscription() {

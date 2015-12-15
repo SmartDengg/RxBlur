@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
     >
@@ -15,22 +15,22 @@
     <Button
         android:id="@+id/main_layout_render_btn"
         android:text="RenderScript Blur"
-        style="@style/button_style"/>
+        style="@style/button_style" tools:ignore="HardcodedText"/>
 
     <Button
         android:id="@+id/main_layout_fast_btn"
         android:text="Fast Blur"
-        style="@style/button_style"/>
+        style="@style/button_style" tools:ignore="HardcodedText"/>
 
     <Button
         android:id="@+id/main_layout_paint_btn"
         android:text="Paint Blur"
-        style="@style/button_style"/>
+        style="@style/button_style" tools:ignore="HardcodedText"/>
 
     <Button
         android:id="@+id/main_layout_animator_btn"
         android:text="Rx Animator Blur"
-        style="@style/button_style"/>
+        style="@style/button_style" tools:ignore="HardcodedText"/>
 
     <ImageView
         android:id="@+id/main_layout_iv"
@@ -47,7 +47,7 @@
         android:id="@+id/main_layout_btn"
         android:layout_marginBottom="8dp"
         android:text="The best and fast Blur"
-        style="@style/button_style"/>
+        style="@style/button_style" tools:ignore="HardcodedText"/>
   </LinearLayout>
 
   <ViewStub
@@ -57,6 +57,5 @@
       android:layout="@layout/main_layout_stub_layout"
       android:inflatedId="@+id/main_layout_blur_iv"
       />
-
 
 </FrameLayout>

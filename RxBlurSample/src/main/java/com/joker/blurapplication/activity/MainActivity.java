@@ -17,9 +17,9 @@ import com.joker.blurapplication.activity.bluractivity.PaintBlurActivity;
 import com.joker.blurapplication.activity.bluractivity.RenderScriptNavigateActivity;
 import com.joker.blurapplication.activity.bluractivity.RxAnimatorBlurActivity;
 import com.joker.blurapplication.rx.RxBlurEffective;
-import com.joker.blurapplication.rx.rxviewstub.RxViewStub;
 import com.joker.blurapplication.rx.SchedulersCompat;
 import com.joker.blurapplication.rx.SimpleSubscriber;
+import com.joker.blurapplication.rx.rxviewstub.RxViewStub;
 import com.joker.blurapplication.rx.rxviewstub.ViewStubEvent;
 import com.trello.rxlifecycle.ActivityEvent;
 import java.util.concurrent.TimeUnit;
@@ -33,7 +33,8 @@ public class MainActivity extends BaseActivity {
 
   private static final String TAG = MainActivity.class.getSimpleName();
 
-  @Nullable @Bind(R.id.main_viewstub_layout) ViewStub viewStub;
+  @Nullable @Bind(R.id.main_viewstub_layout) protected ViewStub viewStub;
+  private Bitmap currentBitmap;
 
   @Nullable @OnClick(R.id.main_layout_render_btn) public void onRenderScripNavigatorClick() {
     RenderScriptNavigateActivity.navigateToRenderScriptNavigate(MainActivity.this);
@@ -62,11 +63,15 @@ public class MainActivity extends BaseActivity {
 
   private Bitmap cacheCurrentScreen() {
 
+    if (currentBitmap != null) {
+      return currentBitmap;
+    }
+
     View root = MainActivity.this.getWindow().getDecorView().findViewById(android.R.id.content);
     root.setDrawingCacheEnabled(true);
     Bitmap drawingCache = root.getDrawingCache();
 
-    Bitmap currentBitmap = Bitmap.createBitmap(drawingCache.getWidth(), drawingCache.getHeight(),
+    currentBitmap = Bitmap.createBitmap(drawingCache.getWidth(), drawingCache.getHeight(),
         Bitmap.Config.ARGB_8888);
     Canvas canvas = new Canvas(currentBitmap);
     Paint paint = new Paint();
@@ -74,7 +79,7 @@ public class MainActivity extends BaseActivity {
     paint.setFlags(Paint.FILTER_BITMAP_FLAG);
     canvas.drawBitmap(drawingCache, 0, 0, paint);
 
-    drawingCache.recycle();
+    root.destroyDrawingCache();
 
     return currentBitmap;
   }
@@ -83,7 +88,7 @@ public class MainActivity extends BaseActivity {
     return R.layout.main_layout;
   }
 
-  @Override public void setupToolbar() {
+  @Override public void setupActionBar() {
     getSupportActionBar().setTitle("BlurApplication");
 
     RxViewStub.inflateEvents(viewStub).map(new Func1<ViewStubEvent, ImageView>() {
@@ -113,7 +118,7 @@ public class MainActivity extends BaseActivity {
     }).compose(MainActivity.this.bindUntilEvent(ActivityEvent.DESTROY)).subscribe();
   }
 
-  private Subscriber subscriber = new SimpleSubscriber() {
+  private Subscriber<Object> subscriber = new SimpleSubscriber<Object>() {
     @Override public void onNext(Object o) {
       MainActivity.this.viewStub.setVisibility(View.GONE);
     }

@@ -134,7 +134,6 @@ public class RemoteBlurActivity extends BaseActivity implements BlurInterface {
   }
 
   interface RestApi {
-
     @GET("/images/2015/12/06/4aa43364c2144aa9a7521cc7b33acc08.png") Observable<Response> acquireBitmap();
   }
 }

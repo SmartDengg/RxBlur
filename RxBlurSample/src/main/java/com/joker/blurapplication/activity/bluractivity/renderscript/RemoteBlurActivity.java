@@ -130,7 +130,6 @@ public class RemoteBlurActivity extends BaseActivity implements BlurInterface {
     durationTv.setText("retrieving image from remote,wait......");
 
     RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(BASE_URL).setClient(new OkClient()).build();
-
     remoteService = restAdapter.create(RestApi.class);
   }
 

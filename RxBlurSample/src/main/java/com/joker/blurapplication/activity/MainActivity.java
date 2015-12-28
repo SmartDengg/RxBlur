@@ -71,8 +71,7 @@ public class MainActivity extends BaseActivity {
     root.setDrawingCacheEnabled(true);
     Bitmap drawingCache = root.getDrawingCache();
 
-    currentBitmap = Bitmap.createBitmap(drawingCache.getWidth(), drawingCache.getHeight(),
-        Bitmap.Config.ARGB_8888);
+    currentBitmap = Bitmap.createBitmap(drawingCache.getWidth(), drawingCache.getHeight(), Bitmap.Config.ARGB_8888);
     Canvas canvas = new Canvas(currentBitmap);
     Paint paint = new Paint();
     paint.setAntiAlias(true);
@@ -98,19 +97,19 @@ public class MainActivity extends BaseActivity {
     }).map(new Func1<ImageView, Void>() {
       @Override public Void call(ImageView blurImageView) {
 
-        RxView.clicks(blurImageView)
+        RxView
+            .clicks(blurImageView)
             .debounce(300, TimeUnit.MILLISECONDS)
             .compose(SchedulersCompat.observeOnMainThread())
             .compose(MainActivity.this.bindUntilEvent(ActivityEvent.DESTROY))
             .subscribe(subscriber);
 
         /*0.1f灰度,如果不喜欢可以置零:)*/
-        Bitmap blurBitmap =
-            RxBlurEffective.bestBlur(MainActivity.this, MainActivity.this.cacheCurrentScreen(), 16,
-                0.1f)
-                .compose(MainActivity.this.<Bitmap>bindUntilEvent(ActivityEvent.DESTROY))
-                .toBlocking()
-                .first();
+        Bitmap blurBitmap = RxBlurEffective
+            .bestBlur(MainActivity.this, MainActivity.this.cacheCurrentScreen(), 16, 0.1f)
+            .compose(MainActivity.this.<Bitmap>bindUntilEvent(ActivityEvent.DESTROY))
+            .toBlocking()
+            .first();
 
         blurImageView.setImageBitmap(blurBitmap);
         return null;

@@ -43,6 +43,7 @@ public class GlideBlurOnSubscribe implements Observable.OnSubscribe<GlideDrawabl
     this.cacheExecutor = ExecutorUtil.getSingleThreadExecutor();
   }
 
+  @SuppressWarnings("unchecked")
   @Override public void call(final Subscriber<? super GlideDrawable> subscriber) {
     Preconditions.checkUiThread();
 
@@ -98,12 +99,11 @@ public class GlideBlurOnSubscribe implements Observable.OnSubscribe<GlideDrawabl
     }
 
     @Override protected void done() {
-
       mainHandler.post(new Runnable() {
         @Override public void run() {
           try {
             if (isDone() && !isCancelled()) {
-              subscriber.onNext(get());
+              subscriber.onNext(MyFutureTask.this.get());
             }
           } catch (InterruptedException | ExecutionException e) {
             subscriber.onError(e);

@@ -62,15 +62,13 @@ public class RemoteBlurActivity extends BaseActivity implements BlurInterface {
                              try {
                                bufferedInputStream = new BufferedInputStream(typedInput.in());
                                sourceBitmap = BitmapFactory.decodeStream(bufferedInputStream);
-                             } catch (IOException e) {
-                               Observable.error(new IOException("typedInput occur an io exception"));
+                             } catch (IOException ignored) {
                              } finally {
                                try {
                                  if (bufferedInputStream != null) {
                                    bufferedInputStream.close();
                                  }
-                               } catch (IOException e) {
-                                 Observable.error(new IOException("stream close exception"));
+                               } catch (IOException ignored) {
                                }
                              }
 

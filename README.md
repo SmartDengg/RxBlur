@@ -1,4 +1,4 @@
-#RxBlurDevelopBranch
+#RxBlur
 
 **Overview**
 -----------------

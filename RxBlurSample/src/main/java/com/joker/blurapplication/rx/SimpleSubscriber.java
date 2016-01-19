@@ -3,7 +3,7 @@ package com.joker.blurapplication.rx;
 import rx.Subscriber;
 
 /**
- * Created by Administrator on 2015/11/27.
+ * Created by Joker on 2015/11/27.
  */
 public class SimpleSubscriber<T> extends Subscriber<T> {
 

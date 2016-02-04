@@ -27,6 +27,7 @@
 **ScreenShot**
 -----------------
 
+![](http://i13.tietuku.com/be8609faebb4ca47.gif)
 
 **Summary**
 -----------------

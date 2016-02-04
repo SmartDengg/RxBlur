@@ -43,8 +43,7 @@ public class GlideBlurOnSubscribe implements Observable.OnSubscribe<GlideDrawabl
     this.cacheExecutor = ExecutorUtil.getSingleThreadExecutor();
   }
 
-  @SuppressWarnings("unchecked")
-  @Override public void call(final Subscriber<? super GlideDrawable> subscriber) {
+  @SuppressWarnings("unchecked") @Override public void call(final Subscriber<? super GlideDrawable> subscriber) {
     Preconditions.checkUiThread();
 
     if (!subscriber.isUnsubscribed()) {

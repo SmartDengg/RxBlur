@@ -1,12 +1,13 @@
 #RxBlur
 
-**Overview**
+![](./images/icon.png)
+
+**简洁**
 -----------------
 在Android设备上,实现一个毛玻璃（高斯模糊）效果总是让人很棘手，不仅要考虑视觉效果，还要在性能和代码实现的复杂度上做出权衡。
 这里归纳和总结了几种实现方案(PS: GitHub + StackOverflow + DIY)，并且用RxJava进行封装，方便以流的形式处理图片的加载和操作。
 
-
-**Project Structure**
+**项目结构**
 -----------------
 
 - **MainActivity：** RxJava + RxBinding + RxViewStub + BestBlur
@@ -24,12 +25,12 @@
 - **RxAnimatorBlurActivity：** RxJava + Picasso + Animator(TypeEvaluator)
 
 
-**ScreenShot**
+**GIF**
 -----------------
 
 ![](./images/RxBlur.gif)
 
-**Summary**
+**总结**
 -----------------
 
 运行项目，然后对比高斯效果，这里计算了每种模糊算法的所耗时长，方便您的选择，虽然BestBlur
@@ -39,8 +40,7 @@
 
 如果，您发现了它的不当之处或者更好地实现思路与方案，请联系我，谢谢。
 
-
-**Developed By**
+**关于开发者**
 -----------------
 
 - 小鄧子 - Hi4Joker@gmail.com
@@ -53,7 +53,7 @@
   <img alt="Follow me on Weibo" src="http://upload-images.jianshu.io/upload_images/268450-50e41e15ac29b776.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" />
 </a>
 
-**Acknowledgments**
+**参考自**
 -----------------
 
 - [RxJava](https://github.com/ReactiveX/RxJava) - ReactiveX

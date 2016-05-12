@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BlurApplication.iml" filepath="$PROJECT_DIR$/BlurApplication.iml" />
       <module fileurl="file://$PROJECT_DIR$/RxBlurSample/RxBlurSample.iml" filepath="$PROJECT_DIR$/RxBlurSample/RxBlurSample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SmartDengg_RxBlur.iml" filepath="$PROJECT_DIR$/SmartDengg_RxBlur.iml" />
     </modules>
   </component>
 </project>

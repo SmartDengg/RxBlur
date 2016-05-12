@@ -1,6 +1,6 @@
-package com.joker.blurapplication.rx;
+package com.joker.blurapplication.rxkit;
 
-import com.joker.blurapplication.rx.rxandroid.schedulers.AndroidSchedulers;
+import com.joker.blurapplication.rxkit.rxandroid.schedulers.AndroidSchedulers;
 import rx.Observable;
 import rx.schedulers.Schedulers;
 

@@ -1,4 +1,4 @@
-package com.joker.blurapplication.rx.subscribe;
+package com.joker.blurapplication.rxkit.subscribe;
 
 import android.content.Context;
 import android.graphics.Bitmap;

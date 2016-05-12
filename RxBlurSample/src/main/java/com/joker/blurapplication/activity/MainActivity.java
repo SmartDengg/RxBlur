@@ -16,11 +16,11 @@ import com.joker.blurapplication.activity.bluractivity.FastBlurActivity;
 import com.joker.blurapplication.activity.bluractivity.PaintBlurActivity;
 import com.joker.blurapplication.activity.bluractivity.RenderScriptNavigateActivity;
 import com.joker.blurapplication.activity.bluractivity.RxAnimatorBlurActivity;
-import com.joker.blurapplication.rx.RxBlurEffective;
-import com.joker.blurapplication.rx.SchedulersCompat;
-import com.joker.blurapplication.rx.SimpleSubscriber;
-import com.joker.blurapplication.rx.rxviewstub.RxViewStub;
-import com.joker.blurapplication.rx.rxviewstub.ViewStubEvent;
+import com.joker.blurapplication.rxkit.RxBlurEffective;
+import com.joker.blurapplication.rxkit.SchedulersCompat;
+import com.joker.blurapplication.rxkit.SimpleSubscriber;
+import com.smartdengg.rxviewstub.interal.RxViewStub;
+import com.smartdengg.rxviewstub.interal.ViewStubEvent;
 import com.trello.rxlifecycle.ActivityEvent;
 import java.util.concurrent.TimeUnit;
 import rx.Subscriber;
@@ -90,13 +90,12 @@ public class MainActivity extends BaseActivity {
   @Override public void setupActionBar() {
     getSupportActionBar().setTitle("BlurApplication");
 
-    RxViewStub.inflateEvents(viewStub).map(new Func1<ViewStubEvent, ImageView>() {
+    RxViewStub.inflateEvent(viewStub).map(new Func1<ViewStubEvent, ImageView>() {
       @Override public ImageView call(ViewStubEvent viewStubEvent) {
         return (ImageView) viewStubEvent.getInflated();
       }
     }).map(new Func1<ImageView, Void>() {
       @Override public Void call(ImageView blurImageView) {
-
         RxView
             .clicks(blurImageView)
             .debounce(300, TimeUnit.MILLISECONDS)

@@ -1,4 +1,4 @@
-package com.joker.blurapplication.rx;
+package com.joker.blurapplication.rxkit;
 
 import rx.Observer;
 

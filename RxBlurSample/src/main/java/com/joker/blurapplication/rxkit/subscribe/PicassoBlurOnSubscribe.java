@@ -1,4 +1,4 @@
-package com.joker.blurapplication.rx.subscribe;
+package com.joker.blurapplication.rxkit.subscribe;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -9,7 +9,7 @@ import com.jakewharton.rxbinding.internal.MainThreadSubscription;
 import com.jakewharton.rxbinding.internal.Preconditions;
 import com.joker.blurapplication.other.TargetAdapter;
 import com.joker.blurapplication.other.transformation.PicassoTransformation;
-import com.joker.blurapplication.rx.PicassoError;
+import com.joker.blurapplication.rxkit.PicassoError;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 import rx.Observable;

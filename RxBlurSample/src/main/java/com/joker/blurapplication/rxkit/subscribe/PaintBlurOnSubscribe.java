@@ -1,4 +1,4 @@
-package com.joker.blurapplication.rx.subscribe;
+package com.joker.blurapplication.rxkit.subscribe;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -8,9 +8,9 @@ import android.support.annotation.NonNull;
 import com.jakewharton.rxbinding.internal.MainThreadSubscription;
 import com.jakewharton.rxbinding.internal.Preconditions;
 import com.joker.blurapplication.other.util.ExecutorUtil;
-import com.joker.blurapplication.other.util.FastBlurUtil;
+import com.joker.blurapplication.other.util.PaintBlurUtil;
 import com.joker.blurapplication.other.TargetAdapter;
-import com.joker.blurapplication.rx.PicassoError;
+import com.joker.blurapplication.rxkit.PicassoError;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 import java.util.concurrent.Executor;
@@ -25,16 +25,16 @@ import static com.squareup.picasso.MemoryPolicy.NO_STORE;
 /**
  * Created by Joker on 2015/11/27.
  */
-public class FastBlurOnSubscribe implements Observable.OnSubscribe<Bitmap> {
+public class PaintBlurOnSubscribe implements Observable.OnSubscribe<Bitmap> {
 
-  private static final String TAG = FastBlurOnSubscribe.class.getSimpleName();
+  private static final String TAG = PaintBlurOnSubscribe.class.getSimpleName();
   private Context context;
   private int resId;
   private float scale = 1L;
   private int radius;
   private Executor ioExecutor;
 
-  public FastBlurOnSubscribe(@NonNull Context context, @DrawableRes int resId, int radius) {
+  public PaintBlurOnSubscribe(@NonNull Context context, @DrawableRes int resId, int radius) {
     this.context = context;
     this.resId = resId;
     this.radius = radius;
@@ -50,7 +50,7 @@ public class FastBlurOnSubscribe implements Observable.OnSubscribe<Bitmap> {
 
         if (!subscriber.isUnsubscribed()) {
           FutureTask<Bitmap> futureTask =
-              new FutureTask<>(FastBlurOnSubscribe.this.futureRunnable(bitmap, subscriber), null);
+              new FutureTask<>(PaintBlurOnSubscribe.this.futureRunnable(bitmap, subscriber), null);
           ioExecutor.execute(futureTask);
           subscriber.add(Subscriptions.from(futureTask));
         }
@@ -61,30 +61,28 @@ public class FastBlurOnSubscribe implements Observable.OnSubscribe<Bitmap> {
       }
     };
 
-    Picasso
-        .with(context)
-        .load(resId)
-        .noFade()
-        .config(Bitmap.Config.ARGB_8888)
-        .memoryPolicy(NO_CACHE, NO_STORE)
-        .into(target);
+    Picasso.with(context)//
+        .load(resId)//
+        .noFade()//
+        .config(Bitmap.Config.ARGB_8888)//
+        .memoryPolicy(NO_CACHE, NO_STORE).into(target);
 
     subscriber.add(new MainThreadSubscription() {
       @Override protected void onUnsubscribe() {
         Picasso.with(context).cancelRequest(target);
-        FastBlurOnSubscribe.this.context = null;
+        PaintBlurOnSubscribe.this.context = null;
       }
     });
   }
 
-  private Runnable futureRunnable(final Bitmap sourceBitmap, final Subscriber<? super Bitmap> subscriber) {
+  private Runnable futureRunnable(final Bitmap sourceBitmap,
+      final Subscriber<? super Bitmap> subscriber) {
 
     return new Runnable() {
       @Override public void run() {
 
         if (!subscriber.isUnsubscribed()) {
-
-          Bitmap blurBitmap = FastBlurUtil.blur(sourceBitmap, scale, radius);
+          Bitmap blurBitmap = PaintBlurUtil.blur(sourceBitmap, radius);
           subscriber.onNext(blurBitmap);
         }
       }

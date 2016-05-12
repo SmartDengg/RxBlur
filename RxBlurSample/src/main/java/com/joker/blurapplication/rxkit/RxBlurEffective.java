@@ -1,4 +1,4 @@
-package com.joker.blurapplication.rx;
+package com.joker.blurapplication.rxkit;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -6,12 +6,12 @@ import android.support.annotation.CheckResult;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.joker.blurapplication.rx.subscribe.AnimationBlurOnSubscribe;
-import com.joker.blurapplication.rx.subscribe.BestBlurOnSubscribe;
-import com.joker.blurapplication.rx.subscribe.FastBlurOnSubscribe;
-import com.joker.blurapplication.rx.subscribe.GlideBlurOnSubscribe;
-import com.joker.blurapplication.rx.subscribe.PaintBlurOnSubscribe;
-import com.joker.blurapplication.rx.subscribe.PicassoBlurOnSubscribe;
+import com.joker.blurapplication.rxkit.subscribe.AnimationBlurOnSubscribe;
+import com.joker.blurapplication.rxkit.subscribe.BestBlurOnSubscribe;
+import com.joker.blurapplication.rxkit.subscribe.FastBlurOnSubscribe;
+import com.joker.blurapplication.rxkit.subscribe.GlideBlurOnSubscribe;
+import com.joker.blurapplication.rxkit.subscribe.PaintBlurOnSubscribe;
+import com.joker.blurapplication.rxkit.subscribe.PicassoBlurOnSubscribe;
 import rx.Observable;
 
 /**

@@ -11,9 +11,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.joker.blurapplication.rx.rxandroid.plugins;
+package com.joker.blurapplication.rxkit.rxandroid.plugins;
 
-import com.joker.blurapplication.rx.rxandroid.schedulers.AndroidSchedulers;
+import com.joker.blurapplication.rxkit.rxandroid.schedulers.AndroidSchedulers;
 import rx.Scheduler;
 import rx.functions.Action0;
 

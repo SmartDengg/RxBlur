@@ -10,7 +10,7 @@
 **项目结构**
 -----------------
 
-- **MainActivity：** RxJava + RxBinding + RxViewStub + BestBlur
+- **MainActivity：** RxJava + RxBinding + [RxViewStub](https://github.com/SmartDengg/RxViewStub) + BestBlur
 
 - **PicassoBlurActivity：** RxJava + Picasso + Transformation + RenderScript
 

@@ -2,6 +2,8 @@
 
 ![](./images/icon.png)
 
+##@Deprecated
+
 **简洁**
 -----------------
 在Android设备上,实现一个毛玻璃（高斯模糊）效果总是让人很棘手，不仅要考虑视觉效果，还要在性能和代码实现的复杂度上做出权衡。
@@ -23,12 +25,6 @@
 - **PaintBlurActivity：** RxJava + Picasso + PaintBlur
 
 - **RxAnimatorBlurActivity：** RxJava + Picasso + Animator(TypeEvaluator)
-
-
-**GIF**
------------------
-
-![](./images/RxBlur.gif)
 
 **总结**
 -----------------

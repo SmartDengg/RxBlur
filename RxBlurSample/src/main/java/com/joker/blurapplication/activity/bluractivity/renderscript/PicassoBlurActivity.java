@@ -48,6 +48,7 @@ public class PicassoBlurActivity extends BaseActivity implements BlurInterface {
 
                              TransitionDrawable transitionDrawable = new TransitionDrawable(layers);
                              PicassoBlurActivity.this.blurIv.setImageDrawable(transitionDrawable);
+                             transitionDrawable.setCrossFadeEnabled(true);
                              transitionDrawable.startTransition(count);
 
                              return Observable

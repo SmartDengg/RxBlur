@@ -33,5 +33,6 @@ dependencies {
   compile 'com.squareup.retrofit:retrofit:1.9.0'
   compile 'com.squareup.okhttp:okhttp:2.7.0'
   /*Third Library*/
-  compile 'com.github.SmartDengg:RxViewStub:0.0.1'
+  compile 'com.github.SmartDengg:RxViewStub:1.0.0'
+  compile 'com.github.SmartDengg:RxDebounceClick:1.1.1'
 }

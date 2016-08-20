@@ -3,7 +3,6 @@ package com.joker.blurapplication.activity.bluractivity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -17,13 +16,13 @@ import butterknife.OnClick;
 import com.jakewharton.rxbinding.widget.RxTextView;
 import com.jakewharton.rxbinding.widget.TextViewTextChangeEvent;
 import com.joker.blurapplication.R;
-import com.joker.blurapplication.activity.LazyBaseActivity;
 import com.joker.blurapplication.activity.BlurInterface;
+import com.joker.blurapplication.activity.LazyBaseActivity;
 import com.joker.blurapplication.rxkit.PicassoError;
 import com.joker.blurapplication.rxkit.RxBlurEffective;
+import com.joker.blurapplication.rxkit.SchedulersCompat;
 import com.joker.blurapplication.rxkit.SimpleSubscriber;
 import com.joker.blurapplication.rxkit.rxandroid.schedulers.AndroidSchedulers;
-import com.joker.blurapplication.rxkit.SchedulersCompat;
 import com.trello.rxlifecycle.ActivityEvent;
 import java.util.concurrent.TimeUnit;
 import rx.Observable;
@@ -60,13 +59,10 @@ public class RxAnimatorBlurActivity extends LazyBaseActivity implements BlurInte
     final int intrinsicHeight = drawable.getIntrinsicHeight();
 
     Bitmap bitmap = Bitmap.createBitmap(intrinsicWidth, intrinsicHeight, Bitmap.Config.ARGB_8888);
-    Paint paint = new Paint();
-    paint.setFlags(Paint.FILTER_BITMAP_FLAG);
 
     Canvas canvas = new Canvas(bitmap);
     drawable.setBounds(0, 0, intrinsicWidth, intrinsicHeight);
     drawable.draw(canvas);
-
     ViewGroup.LayoutParams layoutParams = blurIv.getLayoutParams();
     layoutParams.height = intrinsicHeight;
 
